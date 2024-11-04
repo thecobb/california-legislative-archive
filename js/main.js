@@ -58,16 +58,41 @@ function initializeModal() {
     });
 }
 
+// function showBillModal(bill) {
+//     const modal = document.getElementById('billModal');
+//     const modalContent = document.getElementById('modalContent');
+    
+//     modalContent.innerHTML = `
+//         <h1>${bill.title}</h1>
+//         <div class="bill-content">
+//             ${bill.content.split('\n').map(line => `<p>${line}</p>`).join('')}
+//         </div>
+//     `;
+    
+//     modal.style.display = 'block';
+// }
+
+// Add this function to parse markdown headings
+function parseMarkdown(text) {
+    // Handle h1
+    text = text.replace(/^# (.*$)/gm, '<h1 class="bill-h1">$1</h1>');
+    // Handle h2
+    text = text.replace(/^## (.*$)/gm, '<h2 class="bill-h2">$1</h2>');
+    // Handle h3
+    text = text.replace(/^### (.*$)/gm, '<h3 class="bill-h3">$1</h3>');
+    // Handle lists
+    text = text.replace(/^\d\. (.+)$/gm, '<li>$1</li>');
+    // Wrap lists in ol
+    text = text.replace(/(<li>.*<\/li>)\n(?!\<li>)/gs, '<ol>$1</ol>');
+    // Handle paragraphs
+    text = text.replace(/^(?!(#|<))(.*$)/gm, '<p>$2</p>');
+    return text;
+}
+
 function showBillModal(bill) {
     const modal = document.getElementById('billModal');
     const modalContent = document.getElementById('modalContent');
     
-    modalContent.innerHTML = `
-        <h1>${bill.title}</h1>
-        <div class="bill-content">
-            ${bill.content.split('\n').map(line => `<p>${line}</p>`).join('')}
-        </div>
-    `;
-    
+    modalContent.innerHTML = parseMarkdown(bill.content);
     modal.style.display = 'block';
 }

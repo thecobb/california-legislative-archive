@@ -154,3 +154,156 @@ footer {
         width: 95%;
     }
 }
+
+/* Add these styles to your existing styles.css file */
+
+/* Bill Content Styles */
+.modal-content {
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.8;
+}
+
+.modal-content h1 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin: 2rem 0;
+    text-transform: uppercase;
+}
+
+.modal-content h2 {
+    font-size: 20px;
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.modal-content h3 {
+    font-size: 18px;
+    margin: 2rem 0 1rem 0;
+    font-weight: bold;
+}
+
+.modal-content p {
+    margin: 1rem 0;
+    text-align: justify;
+}
+
+.modal-content strong {
+    font-weight: bold;
+}
+
+.modal-content em {
+    font-style: italic;
+}
+
+.modal-content ol {
+    margin: 1rem 0 1rem 2rem;
+}
+
+.modal-content li {
+    margin: 0.5rem 0;
+    padding-left: 0.5rem;
+}
+
+/* Specific formatting for bill sections */
+.modal-content ol {
+    list-style-type: decimal;
+    margin-left: 2.5rem;
+}
+
+/* Add spacing between major sections */
+.modal-content h3 + p,
+.modal-content h3 + ol {
+    margin-top: 1rem;
+}
+
+/* Style for legal document spacing */
+.modal-content p + h3 {
+    margin-top: 2rem;
+}
+
+/* Style for definitions and subsections */
+.modal-content p:has(+ p),
+.modal-content p:has(+ ol) {
+    margin-bottom: 1rem;
+}
+
+/* Print styles for the document */
+@media print {
+    .modal-content {
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+
+    .modal-content h1 {
+        font-size: 16pt;
+    }
+
+    .modal-content h2 {
+        font-size: 14pt;
+    }
+
+    .modal-content h3 {
+        font-size: 13pt;
+    }
+}
+
+/* Enhanced readability on mobile */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 1rem;
+    }
+
+    .modal-content h1 {
+        font-size: 20px;
+    }
+
+    .modal-content h2 {
+        font-size: 18px;
+    }
+
+    .modal-content h3 {
+        font-size: 16px;
+    }
+
+    .modal-content ol {
+        margin-left: 1.5rem;
+    }
+}
+
+/* Bill Markdown Styles */
+.modal-content .bill-h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 24px 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eaecef;
+}
+
+.modal-content .bill-h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eaecef;
+}
+
+.modal-content .bill-h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 16px 0;
+}
+
+.modal-content ol {
+    padding-left: 2em;
+    margin: 16px 0;
+}
+
+.modal-content li {
+    margin: 8px 0;
+}
+
+.modal-content p {
+    margin: 16px 0;
+    line-height: 1.6;
+}
