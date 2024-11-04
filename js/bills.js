@@ -1,13 +1,13 @@
-// bills.js - Contains the bills data
+// bills.js - Contains the bills data and template
 const bills = [
     {
         id: "ccmb-2024",
         title: "California Competitive Mercedes Behavior (C.C.M.B.) Act of 2024",
         summary: "Regulations regarding Mercedes-Benz vehicle operation and competitive behavior",
         datePublished: "2024-03-31",
-        content: `# LEGISLATIVE COUNSEL'S DIGEST
+        content: `# CALIFORNIA COMPETITIVE MERCEDES BEHAVIOR (C.C.M.B.) ACT OF 2024
 
-## California Competitive Mercedes Behavior (C.C.M.B.) Act of 2024
+## LEGISLATIVE COUNSEL'S DIGEST
 ### California Vehicle Code § 42.3.16(b)
 
 **WHEREAS** the Legislature of the State of California recognizes the inherent superiority complex of Mercedes-Benz vehicle operators and the psychological trauma inflicted upon said operators when passed by vehicles of lesser manufacturer origin;
@@ -53,4 +53,54 @@ This statute shall not apply to:
 
 *Filed with Secretary of State April 1, 2024*`
     }
+    // Template for adding new bills:
+    /*
+    {
+        id: "unique-id-here",
+        title: "Official Title of the Bill",
+        summary: "Brief summary of the bill's purpose",
+        datePublished: "YYYY-MM-DD",
+        content: `# TITLE IN ALL CAPS
+
+## LEGISLATIVE COUNSEL'S DIGEST
+### Reference Code
+
+**WHEREAS** [preamble text];
+
+**BE IT ENACTED** by the People of the State of California that:
+
+### §1. SHORT TITLE
+This act shall be known and may be cited as the *"Official Title"* or *"ACRONYM"*
+
+### §2. DEFINITIONS
+(a) *"Term"* means [definition].
+
+(b) *"Term"* means [definition].
+
+### §3. STATUTORY REQUIREMENTS
+(a) [Main requirements]:
+
+1. First requirement
+2. Second requirement
+3. Third requirement
+
+### §4. ENFORCEMENT
+(a) [Enforcement details]:
+
+1. First penalty
+2. Second penalty
+3. Third penalty
+
+### §5. EXEMPTIONS
+This statute shall not apply to:
+
+(a) [First exemption]
+
+(b) [Second exemption]
+
+**BE IT FURTHER RESOLVED** that [final resolution].
+
+*Filed with Secretary of State [Month Day, Year]*`
+    }
+    */
 ];

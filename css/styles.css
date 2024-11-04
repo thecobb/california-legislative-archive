@@ -101,7 +101,7 @@ main {
     color: #666;
 }
 
-/* Modal Styles */
+/* Modal and Bill Content Styles */
 .modal {
     display: none;
     position: fixed;
@@ -124,6 +124,7 @@ main {
     overflow-y: auto;
     border-radius: 12px;
     box-shadow: 0 4px 8px var(--shadow-color);
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .close-button {
@@ -133,6 +134,51 @@ main {
     font-size: 1.5rem;
     cursor: pointer;
     color: #666;
+}
+
+/* Bill Content Specific Styles */
+.bill-content {
+    line-height: 1.8;
+}
+
+.bill-h1 {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin: 24px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #eaecef;
+}
+
+.bill-h2 {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin: 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eaecef;
+}
+
+.bill-h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 20px 0 16px;
+}
+
+.bill-paragraph {
+    margin: 16px 0;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.bill-list {
+    margin: 16px 0 16px 40px;
+    padding-left: 0;
+}
+
+.bill-list li {
+    margin: 8px 0;
+    padding-left: 8px;
 }
 
 /* Footer Styles */
@@ -152,158 +198,29 @@ footer {
     .modal-content {
         margin: 10% auto;
         width: 95%;
-    }
-}
-
-/* Add these styles to your existing styles.css file */
-
-/* Bill Content Styles */
-.modal-content {
-    font-family: 'Times New Roman', Times, serif;
-    line-height: 1.8;
-}
-
-.modal-content h1 {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    margin: 2rem 0;
-    text-transform: uppercase;
-}
-
-.modal-content h2 {
-    font-size: 20px;
-    text-align: center;
-    margin: 1.5rem 0;
-}
-
-.modal-content h3 {
-    font-size: 18px;
-    margin: 2rem 0 1rem 0;
-    font-weight: bold;
-}
-
-.modal-content p {
-    margin: 1rem 0;
-    text-align: justify;
-}
-
-.modal-content strong {
-    font-weight: bold;
-}
-
-.modal-content em {
-    font-style: italic;
-}
-
-.modal-content ol {
-    margin: 1rem 0 1rem 2rem;
-}
-
-.modal-content li {
-    margin: 0.5rem 0;
-    padding-left: 0.5rem;
-}
-
-/* Specific formatting for bill sections */
-.modal-content ol {
-    list-style-type: decimal;
-    margin-left: 2.5rem;
-}
-
-/* Add spacing between major sections */
-.modal-content h3 + p,
-.modal-content h3 + ol {
-    margin-top: 1rem;
-}
-
-/* Style for legal document spacing */
-.modal-content p + h3 {
-    margin-top: 2rem;
-}
-
-/* Style for definitions and subsections */
-.modal-content p:has(+ p),
-.modal-content p:has(+ ol) {
-    margin-bottom: 1rem;
-}
-
-/* Print styles for the document */
-@media print {
-    .modal-content {
-        font-size: 12pt;
-        line-height: 1.5;
+        padding: 1.5rem;
     }
 
-    .modal-content h1 {
-        font-size: 16pt;
+    .bill-h1 {
+        font-size: 24px;
     }
 
-    .modal-content h2 {
-        font-size: 14pt;
-    }
-
-    .modal-content h3 {
-        font-size: 13pt;
-    }
-}
-
-/* Enhanced readability on mobile */
-@media (max-width: 768px) {
-    .modal-content {
-        padding: 1rem;
-    }
-
-    .modal-content h1 {
+    .bill-h2 {
         font-size: 20px;
     }
 
-    .modal-content h2 {
+    .bill-h3 {
         font-size: 18px;
     }
+}
 
-    .modal-content h3 {
-        font-size: 16px;
+/* Print Styles */
+@media print {
+    .modal-content {
+        box-shadow: none;
     }
 
-    .modal-content ol {
-        margin-left: 1.5rem;
+    .bill-content {
+        font-size: 12pt;
     }
-}
-
-/* Bill Markdown Styles */
-.modal-content .bill-h1 {
-    font-size: 28px;
-    font-weight: bold;
-    margin: 24px 0;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #eaecef;
-}
-
-.modal-content .bill-h2 {
-    font-size: 24px;
-    font-weight: 600;
-    margin: 20px 0;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eaecef;
-}
-
-.modal-content .bill-h3 {
-    font-size: 20px;
-    font-weight: 600;
-    margin: 16px 0;
-}
-
-.modal-content ol {
-    padding-left: 2em;
-    margin: 16px 0;
-}
-
-.modal-content li {
-    margin: 8px 0;
-}
-
-.modal-content p {
-    margin: 16px 0;
-    line-height: 1.6;
 }

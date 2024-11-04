@@ -58,41 +58,58 @@ function initializeModal() {
     });
 }
 
-// function showBillModal(bill) {
-//     const modal = document.getElementById('billModal');
-//     const modalContent = document.getElementById('modalContent');
-    
-//     modalContent.innerHTML = `
-//         <h1>${bill.title}</h1>
-//         <div class="bill-content">
-//             ${bill.content.split('\n').map(line => `<p>${line}</p>`).join('')}
-//         </div>
-//     `;
-    
-//     modal.style.display = 'block';
-// }
+function renderMarkdown(text) {
+    // Process the text in a specific order
+    let html = text;
 
-// Add this function to parse markdown headings
-function parseMarkdown(text) {
-    // Handle h1
-    text = text.replace(/^# (.*$)/gm, '<h1 class="bill-h1">$1</h1>');
-    // Handle h2
-    text = text.replace(/^## (.*$)/gm, '<h2 class="bill-h2">$1</h2>');
-    // Handle h3
-    text = text.replace(/^### (.*$)/gm, '<h3 class="bill-h3">$1</h3>');
-    // Handle lists
-    text = text.replace(/^\d\. (.+)$/gm, '<li>$1</li>');
-    // Wrap lists in ol
-    text = text.replace(/(<li>.*<\/li>)\n(?!\<li>)/gs, '<ol>$1</ol>');
-    // Handle paragraphs
-    text = text.replace(/^(?!(#|<))(.*$)/gm, '<p>$2</p>');
-    return text;
+    // Handle bold text
+    html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    
+    // Handle italic text
+    html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+    
+    // Handle headers
+    html = html.replace(/^# (.*$)/gm, '<h1 class="bill-h1">$1</h1>');
+    html = html.replace(/^## (.*$)/gm, '<h2 class="bill-h2">$1</h2>');
+    html = html.replace(/^### (.*$)/gm, '<h3 class="bill-h3">$1</h3>');
+
+    // Handle ordered lists
+    let inList = false;
+    const lines = html.split('\n');
+    html = lines.map((line, index) => {
+        if (/^\d+\.\s/.test(line)) {
+            if (!inList) {
+                inList = true;
+                return '<ol class="bill-list">\n<li>' + line.replace(/^\d+\.\s/, '') + '</li>';
+            }
+            return '<li>' + line.replace(/^\d+\.\s/, '') + '</li>';
+        } else if (inList) {
+            inList = false;
+            return '</ol>\n' + line;
+        }
+        return line;
+    }).join('\n');
+
+    if (inList) {
+        html += '\n</ol>';
+    }
+
+    // Handle paragraphs (skip lines that are already wrapped in HTML tags)
+    html = html.split('\n').map(line => {
+        line = line.trim();
+        if (line && !line.startsWith('<') && !line.endsWith('>')) {
+            return `<p class="bill-paragraph">${line}</p>`;
+        }
+        return line;
+    }).join('\n');
+
+    return html;
 }
 
 function showBillModal(bill) {
     const modal = document.getElementById('billModal');
     const modalContent = document.getElementById('modalContent');
     
-    modalContent.innerHTML = parseMarkdown(bill.content);
+    modalContent.innerHTML = renderMarkdown(bill.content);
     modal.style.display = 'block';
 }
