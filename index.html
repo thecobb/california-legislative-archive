@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>California Legislative Archives</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <h1>California Legislative Archives</h1>
+            <p class="subtitle">Official Repository of Legislative Documents</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="bills-container">
+            <div class="search-container">
+                <input type="text" id="searchBills" placeholder="Search bills..." class="search-input">
+            </div>
+            
+            <div class="bills-grid" id="billsGrid">
+                <!-- Bills will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <div id="billModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <div id="modalContent"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 State of California. All rights reserved.</p>
+    </footer>
+
+    <script src="./js/bills.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
