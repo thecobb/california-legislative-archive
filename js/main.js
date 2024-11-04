@@ -24,11 +24,18 @@ function renderBills(billsToRender) {
 }
 
 function formatDate(dateString) {
-    return new Date(dateString).toLocaleDateString('en-US', {
+    // Create a date object and force UTC interpretation
+    const date = new Date(dateString + 'T00:00:00Z');
+    
+    // Use UTC methods to prevent timezone conversion
+    const options = {
         year: 'numeric',
         month: 'long',
-        day: 'numeric'
-    });
+        day: 'numeric',
+        timeZone: 'UTC' // Force UTC timezone
+    };
+    
+    return date.toLocaleDateString('en-US', options);
 }
 
 function initializeSearch() {
