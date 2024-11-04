@@ -15,7 +15,7 @@ function renderBills(billsToRender) {
         card.innerHTML = `
             <h2>${bill.title}</h2>
             <p>${bill.summary}</p>
-            <p class="date">Published: ${formatDate(bill.datePublished)}</p>
+            <p class="date">Published: ${formatDateSimple(bill.datePublished)}</p>
         `;
         
         card.addEventListener('click', () => showBillModal(bill));
@@ -24,18 +24,31 @@ function renderBills(billsToRender) {
 }
 
 function formatDate(dateString) {
-    // Create a date object and force UTC interpretation
-    const date = new Date(dateString + 'T00:00:00Z');
+    // Parse the date parts directly to avoid timezone issues
+    const [year, month, day] = dateString.split('-');
     
-    // Use UTC methods to prevent timezone conversion
+    // Create date object with Eastern Time
+    const date = new Date(Date.UTC(year, month - 1, day));
+    
     const options = {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
-        timeZone: 'UTC' // Force UTC timezone
+        timeZone: 'America/New_York'
     };
     
     return date.toLocaleDateString('en-US', options);
+}
+
+// Or even simpler if you want to avoid timezone calculations entirely:
+function formatDateSimple(dateString) {
+    const months = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    
+    const [year, month, day] = dateString.split('-');
+    return `${months[parseInt(month) - 1]} ${parseInt(day)}, ${year}`;
 }
 
 function initializeSearch() {
