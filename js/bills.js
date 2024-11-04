@@ -50,5 +50,6 @@ const bills = [
     // Additional bills can be added here in the same format
 ];
 
+//removed export because we are not using modules
 // Export the bills array for use in main.js
-export default bills;
+//export default bills;
